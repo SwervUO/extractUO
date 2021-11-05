@@ -8,6 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		6494167B273542AB0092D36B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6494167A273542AB0092D36B /* main.cpp */; };
+		64941683273542DD0092D36B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 64941682273542DD0092D36B /* libz.tbd */; };
+		6494168C2735431C0092D36B /* Bitmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416862735431C0092D36B /* Bitmap.cpp */; };
+		6494168D2735431C0092D36B /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416892735431C0092D36B /* Color.cpp */; };
+		6494168E2735431C0092D36B /* ScanLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6494168A2735431C0092D36B /* ScanLine.cpp */; };
+		6494169D273543320092D36B /* TileInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64941690273543320092D36B /* TileInfo.cpp */; };
+		6494169E273543320092D36B /* TileData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64941692273543320092D36B /* TileData.cpp */; };
+		6494169F273543320092D36B /* IDXMul.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64941693273543320092D36B /* IDXMul.cpp */; };
+		649416A0273543320092D36B /* UOPData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64941695273543320092D36B /* UOPData.cpp */; };
+		649416A1273543320092D36B /* MultiData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64941696273543320092D36B /* MultiData.cpp */; };
+		649416A2273543320092D36B /* MapTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64941698273543320092D36B /* MapTerrain.cpp */; };
+		649416A3273543320092D36B /* UOAlerts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64941699273543320092D36B /* UOAlerts.cpp */; };
+		649416A9273543480092D36B /* Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416A6273543480092D36B /* Buffer.cpp */; };
+		649416AA273543480092D36B /* StringUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416A8273543480092D36B /* StringUtility.cpp */; };
+		649416AD273544EF0092D36B /* TexMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416AB273544EF0092D36B /* TexMap.cpp */; };
+		649416B027354EA50092D36B /* ArtData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416AE27354EA50092D36B /* ArtData.cpp */; };
+		649416B3273569910092D36B /* GumpData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416B1273569910092D36B /* GumpData.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +41,37 @@
 /* Begin PBXFileReference section */
 		64941677273542AB0092D36B /* extractUO */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = extractUO; sourceTree = BUILT_PRODUCTS_DIR; };
 		6494167A273542AB0092D36B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		64941682273542DD0092D36B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		649416862735431C0092D36B /* Bitmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bitmap.cpp; sourceTree = "<group>"; };
+		649416872735431C0092D36B /* ScanLine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScanLine.hpp; sourceTree = "<group>"; };
+		649416882735431C0092D36B /* Bitmap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bitmap.hpp; sourceTree = "<group>"; };
+		649416892735431C0092D36B /* Color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
+		6494168A2735431C0092D36B /* ScanLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScanLine.cpp; sourceTree = "<group>"; };
+		6494168B2735431C0092D36B /* Color.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Color.hpp; sourceTree = "<group>"; };
+		6494168F273543320092D36B /* TileInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TileInfo.hpp; sourceTree = "<group>"; };
+		64941690273543320092D36B /* TileInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileInfo.cpp; sourceTree = "<group>"; };
+		64941691273543320092D36B /* UOAlerts.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UOAlerts.hpp; sourceTree = "<group>"; };
+		64941692273543320092D36B /* TileData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileData.cpp; sourceTree = "<group>"; };
+		64941693273543320092D36B /* IDXMul.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IDXMul.cpp; sourceTree = "<group>"; };
+		64941694273543320092D36B /* TileData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TileData.hpp; sourceTree = "<group>"; };
+		64941695273543320092D36B /* UOPData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UOPData.cpp; sourceTree = "<group>"; };
+		64941696273543320092D36B /* MultiData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MultiData.cpp; sourceTree = "<group>"; };
+		64941697273543320092D36B /* MapTerrain.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MapTerrain.hpp; sourceTree = "<group>"; };
+		64941698273543320092D36B /* MapTerrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapTerrain.cpp; sourceTree = "<group>"; };
+		64941699273543320092D36B /* UOAlerts.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UOAlerts.cpp; sourceTree = "<group>"; };
+		6494169A273543320092D36B /* IDXMul.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IDXMul.hpp; sourceTree = "<group>"; };
+		6494169B273543320092D36B /* MultiData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MultiData.hpp; sourceTree = "<group>"; };
+		6494169C273543320092D36B /* UOPData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UOPData.hpp; sourceTree = "<group>"; };
+		649416A5273543470092D36B /* Buffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Buffer.hpp; sourceTree = "<group>"; };
+		649416A6273543480092D36B /* Buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Buffer.cpp; sourceTree = "<group>"; };
+		649416A7273543480092D36B /* StringUtility.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StringUtility.hpp; sourceTree = "<group>"; };
+		649416A8273543480092D36B /* StringUtility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StringUtility.cpp; sourceTree = "<group>"; };
+		649416AB273544EF0092D36B /* TexMap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TexMap.cpp; sourceTree = "<group>"; };
+		649416AC273544EF0092D36B /* TexMap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TexMap.hpp; sourceTree = "<group>"; };
+		649416AE27354EA50092D36B /* ArtData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ArtData.cpp; sourceTree = "<group>"; };
+		649416AF27354EA50092D36B /* ArtData.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ArtData.hpp; sourceTree = "<group>"; };
+		649416B1273569910092D36B /* GumpData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GumpData.cpp; sourceTree = "<group>"; };
+		649416B2273569910092D36B /* GumpData.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GumpData.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64941683273542DD0092D36B /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,8 +89,12 @@
 		6494166E273542AB0092D36B = {
 			isa = PBXGroup;
 			children = (
+				649416A42735433A0092D36B /* Utility */,
+				649416852735430A0092D36B /* Image */,
+				64941684273542F40092D36B /* UOData */,
 				64941679273542AB0092D36B /* extractUO */,
 				64941678273542AB0092D36B /* Products */,
+				64941681273542DD0092D36B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +112,65 @@
 				6494167A273542AB0092D36B /* main.cpp */,
 			);
 			path = extractUO;
+			sourceTree = "<group>";
+		};
+		64941681273542DD0092D36B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				64941682273542DD0092D36B /* libz.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		64941684273542F40092D36B /* UOData */ = {
+			isa = PBXGroup;
+			children = (
+				64941693273543320092D36B /* IDXMul.cpp */,
+				6494169A273543320092D36B /* IDXMul.hpp */,
+				64941698273543320092D36B /* MapTerrain.cpp */,
+				64941697273543320092D36B /* MapTerrain.hpp */,
+				64941696273543320092D36B /* MultiData.cpp */,
+				6494169B273543320092D36B /* MultiData.hpp */,
+				64941692273543320092D36B /* TileData.cpp */,
+				64941694273543320092D36B /* TileData.hpp */,
+				64941690273543320092D36B /* TileInfo.cpp */,
+				6494168F273543320092D36B /* TileInfo.hpp */,
+				64941699273543320092D36B /* UOAlerts.cpp */,
+				64941691273543320092D36B /* UOAlerts.hpp */,
+				64941695273543320092D36B /* UOPData.cpp */,
+				6494169C273543320092D36B /* UOPData.hpp */,
+				649416AB273544EF0092D36B /* TexMap.cpp */,
+				649416AC273544EF0092D36B /* TexMap.hpp */,
+				649416AE27354EA50092D36B /* ArtData.cpp */,
+				649416AF27354EA50092D36B /* ArtData.hpp */,
+				649416B1273569910092D36B /* GumpData.cpp */,
+				649416B2273569910092D36B /* GumpData.hpp */,
+			);
+			path = UOData;
+			sourceTree = "<group>";
+		};
+		649416852735430A0092D36B /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				649416862735431C0092D36B /* Bitmap.cpp */,
+				649416882735431C0092D36B /* Bitmap.hpp */,
+				649416892735431C0092D36B /* Color.cpp */,
+				6494168B2735431C0092D36B /* Color.hpp */,
+				6494168A2735431C0092D36B /* ScanLine.cpp */,
+				649416872735431C0092D36B /* ScanLine.hpp */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		649416A42735433A0092D36B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				649416A6273543480092D36B /* Buffer.cpp */,
+				649416A5273543470092D36B /* Buffer.hpp */,
+				649416A8273543480092D36B /* StringUtility.cpp */,
+				649416A7273543480092D36B /* StringUtility.hpp */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,7 +230,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				649416B3273569910092D36B /* GumpData.cpp in Sources */,
+				6494169F273543320092D36B /* IDXMul.cpp in Sources */,
+				649416A9273543480092D36B /* Buffer.cpp in Sources */,
+				6494169D273543320092D36B /* TileInfo.cpp in Sources */,
+				649416A0273543320092D36B /* UOPData.cpp in Sources */,
+				6494169E273543320092D36B /* TileData.cpp in Sources */,
+				649416A2273543320092D36B /* MapTerrain.cpp in Sources */,
+				649416AD273544EF0092D36B /* TexMap.cpp in Sources */,
+				6494168C2735431C0092D36B /* Bitmap.cpp in Sources */,
+				649416A1273543320092D36B /* MultiData.cpp in Sources */,
+				649416A3273543320092D36B /* UOAlerts.cpp in Sources */,
+				6494168D2735431C0092D36B /* Color.cpp in Sources */,
+				6494168E2735431C0092D36B /* ScanLine.cpp in Sources */,
+				649416B027354EA50092D36B /* ArtData.cpp in Sources */,
 				6494167B273542AB0092D36B /* main.cpp in Sources */,
+				649416AA273543480092D36B /* StringUtility.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
