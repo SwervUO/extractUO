@@ -92,6 +92,7 @@
 		6494166E273542AB0092D36B = {
 			isa = PBXGroup;
 			children = (
+				649416B7273664EE0092D36B /* ThirdParty */,
 				649416A42735433A0092D36B /* Utility */,
 				649416852735430A0092D36B /* Image */,
 				64941684273542F40092D36B /* UOData */,
@@ -176,6 +177,21 @@
 				649416A7273543480092D36B /* StringUtility.hpp */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		649416B7273664EE0092D36B /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				649416B8273664FA0092D36B /* zlib */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		649416B8273664FA0092D36B /* zlib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = zlib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
