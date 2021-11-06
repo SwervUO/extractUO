@@ -9,7 +9,7 @@
 #include <cstdint>
 #include <stdexcept>
 namespace UO {
-	enum class AlertType {base,fileopen,streamerror,unknownhash,invaliduop,invalidtileid,invalidartsize};
+	enum class AlertType {base,fileopen,streamerror,unknownhash,invaliduop,invalidtileid,invalidartsize,invalidanimfileid};
 	//===============================================================
 	// Base alert, to allow one to catch just this if desired
 	struct UOAlert : public std::runtime_error {
@@ -60,6 +60,13 @@ namespace UO {
 		std::size_t height ;
 		
 		InvalidArtSize( std::size_t width,std::size_t height);
+	};
+	//===============================================================
+	// Invalid ArtSize file
+	struct InvalidAnimationFileID : public UOAlert {
+		std::int32_t fileid ;
+		
+		InvalidAnimationFileID( std::int32_t fileid);
 	};
 
 }

@@ -49,4 +49,9 @@ namespace UO {
 		this->width = width ;
 		this->height = height ;
 	}
+	//===============================================================
+	InvalidAnimationFileID::InvalidAnimationFileID( std::int32_t fileid): UOAlert("Invalid animation file id: "s + std::to_string(fileid)){
+		alert_type = AlertType::invalidanimfileid ;
+		this->fileid = fileid;
+	}
 }

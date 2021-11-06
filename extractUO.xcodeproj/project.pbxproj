@@ -24,6 +24,7 @@
 		649416AD273544EF0092D36B /* TexMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416AB273544EF0092D36B /* TexMap.cpp */; };
 		649416B027354EA50092D36B /* ArtData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416AE27354EA50092D36B /* ArtData.cpp */; };
 		649416B3273569910092D36B /* GumpData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416B1273569910092D36B /* GumpData.cpp */; };
+		649416B62735ACC70092D36B /* AnimationData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416B42735ACC70092D36B /* AnimationData.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -72,6 +73,8 @@
 		649416AF27354EA50092D36B /* ArtData.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ArtData.hpp; sourceTree = "<group>"; };
 		649416B1273569910092D36B /* GumpData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GumpData.cpp; sourceTree = "<group>"; };
 		649416B2273569910092D36B /* GumpData.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GumpData.hpp; sourceTree = "<group>"; };
+		649416B42735ACC70092D36B /* AnimationData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationData.cpp; sourceTree = "<group>"; };
+		649416B52735ACC70092D36B /* AnimationData.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AnimationData.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +148,8 @@
 				649416AF27354EA50092D36B /* ArtData.hpp */,
 				649416B1273569910092D36B /* GumpData.cpp */,
 				649416B2273569910092D36B /* GumpData.hpp */,
+				649416B42735ACC70092D36B /* AnimationData.cpp */,
+				649416B52735ACC70092D36B /* AnimationData.hpp */,
 			);
 			path = UOData;
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 				649416A1273543320092D36B /* MultiData.cpp in Sources */,
 				649416A3273543320092D36B /* UOAlerts.cpp in Sources */,
 				6494168D2735431C0092D36B /* Color.cpp in Sources */,
+				649416B62735ACC70092D36B /* AnimationData.cpp in Sources */,
 				6494168E2735431C0092D36B /* ScanLine.cpp in Sources */,
 				649416B027354EA50092D36B /* ArtData.cpp in Sources */,
 				6494167B273542AB0092D36B /* main.cpp in Sources */,
