@@ -54,4 +54,8 @@ namespace UO {
 		alert_type = AlertType::invalidanimfileid ;
 		this->fileid = fileid;
 	}
+	//===============================================================
+	InvalidMapBlockSize::InvalidMapBlockSize(std::size_t size) : UOAlert("Map Block sizes expected to be 196 bytes, received: "s+std::to_string(size)+" bytes."s){
+		this->size = size ;
+	}
 }

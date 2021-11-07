@@ -40,6 +40,7 @@
 #include <fstream>
 #include <string>
 #include <stdexcept>
+#include <algorithm>
 
 #include "StringUtility.hpp"
 #include "TileData.hpp"
@@ -48,6 +49,9 @@
 #include "TexMap.hpp"
 #include "Bitmap.hpp"
 #include "AnimationData.hpp"
+#include "MapTerArt.hpp"
+
+#include "RadarColor.hpp"
 
 using namespace std::string_literals;
 
@@ -58,10 +62,19 @@ bool _art = false ;
 bool _texture = false ;
 bool _gump = false ;
 bool _animation = false ;
+bool _map0 = false ;
+bool _map1 = false ;
+bool _map2 = false ;
+bool _map3 = false ;
+bool _map4 = false ;
+bool _map5 = false ;
+bool _multi = false ;
 
 std::map<std::string,bool*> _flags {
 	{"--info"s,&_info},{"--terrain"s,&_terrain},{"--art"s, &_art},
-	{"--texture"s,&_texture},{"--gump"s,&_gump},{"--animation"s,&_animation}
+	{"--texture"s,&_texture},{"--gump"s,&_gump},{"--animation"s,&_animation},
+	{"--map0"s,&_map0},{"--map1"s,&_map1},{"--map2"s,&_map2},{"--map3"s,&_map3},
+	{"--map4"s,&_map4},{"--map5"s,&_map5},{"--multi"s,&_multi}
 };
 
 int main(int argc, const char * argv[]) {
@@ -99,11 +112,29 @@ int main(int argc, const char * argv[]) {
 			*(iter->second) = true ;
 		}
 	}
+	
+	UO::multi_st multi ;
+	UO::multi_structure unit ;
+	multi.x = 0;
+	unit.components.push_back(multi);
+	multi.x = 3 ;
+	unit.components.push_back(multi);
+	multi.x = 7;
+	unit.components.push_back(multi);
+	std::sort(unit.components.rbegin(),unit.components.rend(),[](const UO::multi_st &lhs,UO::multi_st &rhs) {
+		return lhs.x < rhs.x;
+	});
+	for (auto &entry: unit.components){
+		std::cout << entry.x << std::endl;
+	}
+
+	return EXIT_SUCCESS;
+	
 	try {
 		// Now, lets process!
+		std::cout <<"Loading tile information" << std::endl;
+		UO::TileData::shared(uodir.string());
 		if (_info || _art || _terrain){
-			std::cout <<"Loading tile information" << std::endl;
-			UO::TileData::shared(uodir.string());
 			std::cout <<"Loading artwork (also needed for --info)" << std::endl;
 			UO::ArtData artwork(uodir.string());
 			if (_info) {
@@ -246,6 +277,290 @@ int main(int argc, const char * argv[]) {
 						}
 					}
 				}
+				
+			}
+		}
+		if (_map0 || _map1 || _map2 || _map3 || _map4 || _map5){
+			std::cout <<"Loading radar colors" << std::endl;
+			UO::RadarColor palette(uodir.string());
+			auto path = outputdir / std::filesystem::path("maps");
+			if (!std::filesystem::exists(path)){
+				std::filesystem::create_directory(path);
+			}
+			if (_map0){
+				auto mappath = path / std::filesystem::path("map0");
+				if (!std::filesystem::exists(mappath)){
+					std::filesystem::create_directory(mappath);
+				}
+				auto radarpath = mappath / std::filesystem::path("radar.bmp");
+				auto terrainpath = mappath/std::filesystem::path("terrain.csv");
+				auto artpath = mappath/std::filesystem::path("art.csv");
+				UO::MapTerArt mapdata(0,0,0) ;
+				std::cout <<"Loading map 0 data"<<std::endl;
+				mapdata.load(uodir.string());
+				if (!mapdata.uop()){
+					mapdata.applyTerrainDiff(uodir.string(), uodir.string());
+				}
+				mapdata.applyArtDiff(uodir.string(), uodir.string(), uodir.string());
+				std::cout <<"\tExtracting radar map" << std::endl;
+				auto bitmap = mapdata.radar(palette);
+				bitmap.save(radarpath.string());
+				std::cout <<"\tExtracting terrain info" << std::endl;
+				std::ofstream output(terrainpath.string()) ;
+				UO::tile_info infostub ;
+				infostub.type = UO::TileType::terrain ;
+				output <<"y,x,z,tileid,"<<infostub.csvTitle()<<std::endl;
+				for (auto y=0; y < mapdata.mapHeight();y++){
+					for (auto x=0;x<mapdata.mapWidth();x++){
+						auto tile = mapdata.terrain(x, y);
+						output << y<<","<<x<<","<<tile.z<<","<<strutil::numtostr(tile.tileid,16,true,4)<<","<<tile.info.csvRow()<<std::endl;
+					}
+				}
+				output.close();
+				// now do the art work
+				std::cout <<"\tExtracting art info" << std::endl;
+				output.open(artpath.string());
+				infostub.type = UO::TileType::art;
+				output <<"y,x,z,tileid,static hue,"<<infostub.csvTitle()<<std::endl;
+				for (auto y=0; y < mapdata.mapHeight();y++){
+					for (auto x=0;x<mapdata.mapWidth();x++){
+						auto tiles = mapdata.art(x, y);
+						for (const auto &entry: tiles){
+							output<<y<<","<<x<<","<<entry.z<<","<<strutil::numtostr(entry.artHue,16,true,4)<<","<<entry.info.csvRow()<<std::endl;
+						}
+					}
+				}
+				output.close();
+
+			}
+			if (_map1){
+				auto mappath = path / std::filesystem::path("map1");
+				if (!std::filesystem::exists(mappath)){
+					std::filesystem::create_directory(mappath);
+				}
+				auto radarpath = mappath / std::filesystem::path("radar.bmp");
+				auto terrainpath = mappath/std::filesystem::path("terrain.csv");
+				auto artpath = mappath/std::filesystem::path("art.csv");
+				UO::MapTerArt mapdata(1,0,0) ;
+				std::cout <<"Loading map 1 data"<<std::endl;
+				mapdata.load(uodir.string());
+				if (!mapdata.uop()){
+					mapdata.applyTerrainDiff(uodir.string(), uodir.string());
+				}
+				mapdata.applyArtDiff(uodir.string(), uodir.string(), uodir.string());
+				std::cout <<"\tExtracting radar map" << std::endl;
+				auto bitmap = mapdata.radar(palette);
+				bitmap.save(radarpath.string());
+				std::cout <<"\tExtracting terrain info" << std::endl;
+				std::ofstream output(terrainpath.string()) ;
+				UO::tile_info infostub ;
+				infostub.type = UO::TileType::terrain ;
+				output <<"y,x,z,tileid,"<<infostub.csvTitle()<<std::endl;
+				for (auto y=0; y < mapdata.mapHeight();y++){
+					for (auto x=0;x<mapdata.mapWidth();x++){
+						auto tile = mapdata.terrain(x, y);
+						output << y<<","<<x<<","<<tile.z<<","<<strutil::numtostr(tile.tileid,16,true,4)<<","<<tile.info.csvRow()<<std::endl;
+					}
+				}
+				output.close();
+				// now do the art work
+				std::cout <<"\tExtracting art info" << std::endl;
+				output.open(artpath.string());
+				infostub.type = UO::TileType::art;
+				output <<"y,x,z,tileid,static hue,"<<infostub.csvTitle()<<std::endl;
+				for (auto y=0; y < mapdata.mapHeight();y++){
+					for (auto x=0;x<mapdata.mapWidth();x++){
+						auto tiles = mapdata.art(x, y);
+						for (const auto &entry: tiles){
+							output<<y<<","<<x<<","<<entry.z<<","<<strutil::numtostr(entry.artHue,16,true,4)<<","<<entry.info.csvRow()<<std::endl;
+						}
+					}
+				}
+				output.close();
+				
+			}
+			if (_map2){
+				auto mappath = path / std::filesystem::path("map2");
+				if (!std::filesystem::exists(mappath)){
+					std::filesystem::create_directory(mappath);
+				}
+				auto radarpath = mappath / std::filesystem::path("radar.bmp");
+				auto terrainpath = mappath/std::filesystem::path("terrain.csv");
+				auto artpath = mappath/std::filesystem::path("art.csv");
+				UO::MapTerArt mapdata(2,0,0) ;
+				std::cout <<"Loading map 2 data"<<std::endl;
+				mapdata.load(uodir.string());
+				if (!mapdata.uop()){
+					mapdata.applyTerrainDiff(uodir.string(), uodir.string());
+				}
+				mapdata.applyArtDiff(uodir.string(), uodir.string(), uodir.string());
+				std::cout <<"\tExtracting radar map" << std::endl;
+				auto bitmap = mapdata.radar(palette);
+				bitmap.save(radarpath.string());
+				std::cout <<"\tExtracting terrain info" << std::endl;
+				std::ofstream output(terrainpath.string()) ;
+				UO::tile_info infostub ;
+				infostub.type = UO::TileType::terrain ;
+				output <<"y,x,z,tileid,"<<infostub.csvTitle()<<std::endl;
+				for (auto y=0; y < mapdata.mapHeight();y++){
+					for (auto x=0;x<mapdata.mapWidth();x++){
+						auto tile = mapdata.terrain(x, y);
+						output << y<<","<<x<<","<<tile.z<<","<<strutil::numtostr(tile.tileid,16,true,4)<<","<<tile.info.csvRow()<<std::endl;
+					}
+				}
+				output.close();
+				// now do the art work
+				std::cout <<"\tExtracting art info" << std::endl;
+				output.open(artpath.string());
+				infostub.type = UO::TileType::art;
+				output <<"y,x,z,tileid,static hue,"<<infostub.csvTitle()<<std::endl;
+				for (auto y=0; y < mapdata.mapHeight();y++){
+					for (auto x=0;x<mapdata.mapWidth();x++){
+						auto tiles = mapdata.art(x, y);
+						for (const auto &entry: tiles){
+							output<<y<<","<<x<<","<<entry.z<<","<<strutil::numtostr(entry.artHue,16,true,4)<<","<<entry.info.csvRow()<<std::endl;
+						}
+					}
+				}
+				output.close();
+				
+			}
+			if (_map3){
+				auto mappath = path / std::filesystem::path("map3");
+				if (!std::filesystem::exists(mappath)){
+					std::filesystem::create_directory(mappath);
+				}
+				auto radarpath = mappath / std::filesystem::path("radar.bmp");
+				auto terrainpath = mappath/std::filesystem::path("terrain.csv");
+				auto artpath = mappath/std::filesystem::path("art.csv");
+				UO::MapTerArt mapdata(3,0,0) ;
+				std::cout <<"Loading map 3 data"<<std::endl;
+				mapdata.load(uodir.string());
+				if (!mapdata.uop()){
+					mapdata.applyTerrainDiff(uodir.string(), uodir.string());
+				}
+				mapdata.applyArtDiff(uodir.string(), uodir.string(), uodir.string());
+				std::cout <<"\tExtracting radar map" << std::endl;
+				auto bitmap = mapdata.radar(palette);
+				bitmap.save(radarpath.string());
+				std::cout <<"\tExtracting terrain info" << std::endl;
+				std::ofstream output(terrainpath.string()) ;
+				UO::tile_info infostub ;
+				infostub.type = UO::TileType::terrain ;
+				output <<"y,x,z,tileid,"<<infostub.csvTitle()<<std::endl;
+				for (auto y=0; y < mapdata.mapHeight();y++){
+					for (auto x=0;x<mapdata.mapWidth();x++){
+						auto tile = mapdata.terrain(x, y);
+						output << y<<","<<x<<","<<tile.z<<","<<strutil::numtostr(tile.tileid,16,true,4)<<","<<tile.info.csvRow()<<std::endl;
+					}
+				}
+				output.close();
+				// now do the art work
+				std::cout <<"\tExtracting art info" << std::endl;
+				output.open(artpath.string());
+				infostub.type = UO::TileType::art;
+				output <<"y,x,z,tileid,static hue,"<<infostub.csvTitle()<<std::endl;
+				for (auto y=0; y < mapdata.mapHeight();y++){
+					for (auto x=0;x<mapdata.mapWidth();x++){
+						auto tiles = mapdata.art(x, y);
+						for (const auto &entry: tiles){
+							output<<y<<","<<x<<","<<entry.z<<","<<strutil::numtostr(entry.artHue,16,true,4)<<","<<entry.info.csvRow()<<std::endl;
+						}
+					}
+				}
+				output.close();
+				
+			}
+			if (_map4){
+				auto mappath = path / std::filesystem::path("map4");
+				if (!std::filesystem::exists(mappath)){
+					std::filesystem::create_directory(mappath);
+				}
+				auto radarpath = mappath / std::filesystem::path("radar.bmp");
+				auto terrainpath = mappath/std::filesystem::path("terrain.csv");
+				auto artpath = mappath/std::filesystem::path("art.csv");
+				UO::MapTerArt mapdata(4,0,0) ;
+				std::cout <<"Loading map 4 data"<<std::endl;
+				mapdata.load(uodir.string());
+				if (!mapdata.uop()){
+					mapdata.applyTerrainDiff(uodir.string(), uodir.string());
+				}
+				mapdata.applyArtDiff(uodir.string(), uodir.string(), uodir.string());
+				std::cout <<"\tExtracting radar map" << std::endl;
+				auto bitmap = mapdata.radar(palette);
+				bitmap.save(radarpath.string());
+				std::cout <<"\tExtracting terrain info" << std::endl;
+				std::ofstream output(terrainpath.string()) ;
+				UO::tile_info infostub ;
+				infostub.type = UO::TileType::terrain ;
+				output <<"y,x,z,tileid,"<<infostub.csvTitle()<<std::endl;
+				for (auto y=0; y < mapdata.mapHeight();y++){
+					for (auto x=0;x<mapdata.mapWidth();x++){
+						auto tile = mapdata.terrain(x, y);
+						output << y<<","<<x<<","<<tile.z<<","<<strutil::numtostr(tile.tileid,16,true,4)<<","<<tile.info.csvRow()<<std::endl;
+					}
+				}
+				output.close();
+				// now do the art work
+				std::cout <<"\tExtracting art info" << std::endl;
+				output.open(artpath.string());
+				infostub.type = UO::TileType::art;
+				output <<"y,x,z,tileid,static hue,"<<infostub.csvTitle()<<std::endl;
+				for (auto y=0; y < mapdata.mapHeight();y++){
+					for (auto x=0;x<mapdata.mapWidth();x++){
+						auto tiles = mapdata.art(x, y);
+						for (const auto &entry: tiles){
+							output<<y<<","<<x<<","<<entry.z<<","<<strutil::numtostr(entry.artHue,16,true,4)<<","<<entry.info.csvRow()<<std::endl;
+						}
+					}
+				}
+				output.close();
+				
+			}
+			if (_map5){
+				auto mappath = path / std::filesystem::path("map5");
+				if (!std::filesystem::exists(mappath)){
+					std::filesystem::create_directory(mappath);
+				}
+				auto radarpath = mappath / std::filesystem::path("radar.bmp");
+				auto terrainpath = mappath/std::filesystem::path("terrain.csv");
+				auto artpath = mappath/std::filesystem::path("art.csv");
+				UO::MapTerArt mapdata(5,0,0) ;
+				std::cout <<"Loading map 5 data"<<std::endl;
+				mapdata.load(uodir.string());
+				if (!mapdata.uop()){
+					mapdata.applyTerrainDiff(uodir.string(), uodir.string());
+				}
+				mapdata.applyArtDiff(uodir.string(), uodir.string(), uodir.string());
+				std::cout <<"\tExtracting radar map" << std::endl;
+				auto bitmap = mapdata.radar(palette);
+				bitmap.save(radarpath.string());
+				std::cout <<"\tExtracting terrain info" << std::endl;
+				std::ofstream output(terrainpath.string()) ;
+				UO::tile_info infostub ;
+				infostub.type = UO::TileType::terrain ;
+				output <<"y,x,z,tileid,"<<infostub.csvTitle()<<std::endl;
+				for (auto y=0; y < mapdata.mapHeight();y++){
+					for (auto x=0;x<mapdata.mapWidth();x++){
+						auto tile = mapdata.terrain(x, y);
+						output << y<<","<<x<<","<<tile.z<<","<<strutil::numtostr(tile.tileid,16,true,4)<<","<<tile.info.csvRow()<<std::endl;
+					}
+				}
+				output.close();
+				// now do the art work
+				std::cout <<"\tExtracting art info" << std::endl;
+				output.open(artpath.string());
+				infostub.type = UO::TileType::art;
+				output <<"y,x,z,tileid,static hue,"<<infostub.csvTitle()<<std::endl;
+				for (auto y=0; y < mapdata.mapHeight();y++){
+					for (auto x=0;x<mapdata.mapWidth();x++){
+						auto tiles = mapdata.art(x, y);
+						for (const auto &entry: tiles){
+							output<<y<<","<<x<<","<<entry.z<<","<<strutil::numtostr(entry.artHue,16,true,4)<<","<<entry.info.csvRow()<<std::endl;
+						}
+					}
+				}
+				output.close();
 				
 			}
 		}

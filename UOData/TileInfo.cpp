@@ -166,17 +166,74 @@ namespace UO {
 
 	//===============================================================
 	tile_st::tile_st() {
-		info  = nullptr;
-		x  = 0;
-		y = 0;
+		tileid = invalid_tileid ;
+		info  = tile_info() ;
 		z = 0;
 		artHue = 0 ;
-		multiFlag = 0;
 		isStatic = false ;
-		isMulti = false ;
 
 	}
-	
+	//===============================================================
+	tile_st::tile_st(tileid_t tileid) {
+		info  = tile_info() ;
+		z = 0;
+		artHue = 0 ;
+		isStatic = false ;
+		this->tileid = tileid ;
+		
+	}
+	//===============================================================
+	bool tile_st::lowerAltitude( const tile_st &rhs) const {
+		return this->z < rhs.z ;
+	}
+	//===============================================================
+	bool tile_st::operator<(const tile_st &rhs) const {
+		return (this->z+this->info.height) < (rhs.z+rhs.info.height);
+	}
+
+	/************************************************************************
+	 Multi
+	 ************************************************************************/
+
+	//===============================================================
+	multi_st::multi_st(){
+		tileid = invalid_tileid;
+		info = tile_info();
+		x =0 ;
+		y = 0;
+		z =0 ;
+		flag =0;
+	}
+	//===============================================================
+	multi_st::multi_st(tileid_t tileid) :multi_st() {
+		this->tileid = tileid ;
+	}
+	//===============================================================
+	multi_structure::multi_structure(){
+		multiID = 0;
+		min_y =0;
+		max_y = 0;
+		min_x = 0;
+		max_x = 0;
+		min_z = 0;
+		max_z = 0;
+	}
+	//===============================================================
+	std::vector<multi_st> multi_structure::atX(std::int32_t x){
+		
+		return std::vector<multi_st>();
+	}
+	//===============================================================
+	std::vector<multi_st> multi_structure::atY(std::int32_t x){
+		
+		return std::vector<multi_st>();
+	}
+	//===============================================================
+	std::vector<multi_st> multi_structure::at(std::int32_t x, std::int32_t y){
+		
+		return std::vector<multi_st>();
+	}
+
 	/************************************************************************
 	 TileInfo
 	 ************************************************************************/
@@ -320,8 +377,9 @@ namespace UO {
 		if (std::filesystem::is_directory(path)){
 			path = path / std::filesystem::path(_tiledata_mul);
 		}
+		
 		auto size = std::filesystem::file_size(path);
-		_usedHS = false ;
+			_usedHS = false ;
 		if (size == _size_for_HS){
 			_usedHS = true ;
 		}

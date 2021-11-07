@@ -154,7 +154,7 @@ namespace IMG {
 	
 	//=============================================================
 	std::uint32_t Bitmap::padSize(std::uint32_t width, std::uint32_t bytes_per_pixel) const {
-		return ((4-((width * bytes_per_pixel)%4))!=4)? (4-((width * bytes_per_pixel)%4))  : 0 ;
+		return ((width * bytes_per_pixel)%4)!=0? (4-((width * bytes_per_pixel)%4))  : 0 ;
 	}
 	//=============================================================
 	std::uint8_t Bitmap::index(const Color & color, const std::vector<Color> &lookup) const{

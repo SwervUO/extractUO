@@ -62,11 +62,17 @@ namespace UO {
 		InvalidArtSize( std::size_t width,std::size_t height);
 	};
 	//===============================================================
-	// Invalid ArtSize file
+	// Invalid fileid (only accept 0,2..5)
 	struct InvalidAnimationFileID : public UOAlert {
 		std::int32_t fileid ;
 		
 		InvalidAnimationFileID( std::int32_t fileid);
+	};
+	//===============================================================
+	// Invalid Map Block size
+	struct InvalidMapBlockSize : public UOAlert {
+		std::size_t size ;
+		InvalidMapBlockSize(std::size_t size);
 	};
 
 }

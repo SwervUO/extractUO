@@ -26,11 +26,11 @@ Buffer::Buffer(const std::uint8_t *ptr,std::size_t size ):Buffer(size){
  Underlying access
  *******************************************************************************/
 //===============================================================
-const std::vector<unsigned char>& Buffer::raw() const {
+const std::vector<std::uint8_t>& Buffer::raw() const {
 	return _data;
 }
 //===============================================================
-std::vector<unsigned char> & Buffer::raw() {
+std::vector<std::uint8_t> & Buffer::raw() {
 	return _data;
 }
 

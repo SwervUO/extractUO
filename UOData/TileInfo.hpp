@@ -141,17 +141,44 @@ namespace UO {
 	
 	//===============================================================
 	struct tile_st {
-		tile_info *info ;
+		tileid_t tileid ;
+		tile_info info ;
+		std::int32_t z ;
+		bool isStatic;
+		std::uint16_t artHue ;
+		tile_st() ;
+		tile_st(tileid_t tileid);
+		bool lowerAltitude( const tile_st &rhs) const ;
+		bool operator<(const tile_st &rhs) const ;
+	};
+
+	//===============================================================
+	struct multi_st {
+		tileid_t tileid ;
+		tile_info info ;
 		std::int32_t x ;
 		std::int32_t y;
 		std::int32_t z ;
-		bool isStatic;
-		bool isMulti;
-		std::uint16_t artHue ;
-		std::uint64_t multiFlag ;
-		tile_st() ;
+		std::uint64_t flag ;
+		multi_st();
+		multi_st(tileid_t tileid) ;
 	};
-
+	//===============================================================
+	struct multi_structure {
+		std::string name ;
+		std::size_t multiID ;
+		std::int32_t min_y ;
+		std::int32_t max_y;
+		std::int32_t min_x ;
+		std::int32_t max_x;
+		std::int32_t min_z ;
+		std::int32_t max_z;
+		multi_structure();
+		std::vector<multi_st> components ;
+		std::vector<multi_st> atX(std::int32_t x);
+		std::vector<multi_st> atY(std::int32_t x);
+		std::vector<multi_st> at(std::int32_t x, std::int32_t y);
+	};
 	//===============================================================
 
 	class TileInfo {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		647CFAF527387E8800A112F6 /* MultiNames.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 647CFAF427387E8800A112F6 /* MultiNames.cpp */; };
 		6494167B273542AB0092D36B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6494167A273542AB0092D36B /* main.cpp */; };
 		64941683273542DD0092D36B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 64941682273542DD0092D36B /* libz.tbd */; };
 		6494168C2735431C0092D36B /* Bitmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416862735431C0092D36B /* Bitmap.cpp */; };
@@ -25,6 +26,11 @@
 		649416B027354EA50092D36B /* ArtData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416AE27354EA50092D36B /* ArtData.cpp */; };
 		649416B3273569910092D36B /* GumpData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416B1273569910092D36B /* GumpData.cpp */; };
 		649416B62735ACC70092D36B /* AnimationData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416B42735ACC70092D36B /* AnimationData.cpp */; };
+		649416BB27369EB50092D36B /* RadarColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416B927369EB50092D36B /* RadarColor.cpp */; };
+		649416BE2736A2900092D36B /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416BC2736A2900092D36B /* Block.cpp */; };
+		649416C12736BFC50092D36B /* UOMapBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416BF2736BFC50092D36B /* UOMapBase.cpp */; };
+		649416C42737E82B0092D36B /* MapArt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416C22737E82B0092D36B /* MapArt.cpp */; };
+		649416C72738058E0092D36B /* MapTerArt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416C52738058E0092D36B /* MapTerArt.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		647CFAF427387E8800A112F6 /* MultiNames.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MultiNames.cpp; sourceTree = "<group>"; };
 		64941677273542AB0092D36B /* extractUO */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = extractUO; sourceTree = BUILT_PRODUCTS_DIR; };
 		6494167A273542AB0092D36B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		64941682273542DD0092D36B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -75,6 +82,16 @@
 		649416B2273569910092D36B /* GumpData.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GumpData.hpp; sourceTree = "<group>"; };
 		649416B42735ACC70092D36B /* AnimationData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationData.cpp; sourceTree = "<group>"; };
 		649416B52735ACC70092D36B /* AnimationData.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AnimationData.hpp; sourceTree = "<group>"; };
+		649416B927369EB50092D36B /* RadarColor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RadarColor.cpp; sourceTree = "<group>"; };
+		649416BA27369EB50092D36B /* RadarColor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RadarColor.hpp; sourceTree = "<group>"; };
+		649416BC2736A2900092D36B /* Block.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Block.cpp; sourceTree = "<group>"; };
+		649416BD2736A2900092D36B /* Block.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Block.hpp; sourceTree = "<group>"; };
+		649416BF2736BFC50092D36B /* UOMapBase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UOMapBase.cpp; sourceTree = "<group>"; };
+		649416C02736BFC50092D36B /* UOMapBase.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UOMapBase.hpp; sourceTree = "<group>"; };
+		649416C22737E82B0092D36B /* MapArt.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MapArt.cpp; sourceTree = "<group>"; };
+		649416C32737E82B0092D36B /* MapArt.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MapArt.hpp; sourceTree = "<group>"; };
+		649416C52738058E0092D36B /* MapTerArt.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MapTerArt.cpp; sourceTree = "<group>"; };
+		649416C62738058E0092D36B /* MapTerArt.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MapTerArt.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,8 +150,15 @@
 				6494169A273543320092D36B /* IDXMul.hpp */,
 				64941698273543320092D36B /* MapTerrain.cpp */,
 				64941697273543320092D36B /* MapTerrain.hpp */,
+				649416C22737E82B0092D36B /* MapArt.cpp */,
+				649416C32737E82B0092D36B /* MapArt.hpp */,
+				649416C52738058E0092D36B /* MapTerArt.cpp */,
+				649416C62738058E0092D36B /* MapTerArt.hpp */,
+				649416BF2736BFC50092D36B /* UOMapBase.cpp */,
+				649416C02736BFC50092D36B /* UOMapBase.hpp */,
 				64941696273543320092D36B /* MultiData.cpp */,
 				6494169B273543320092D36B /* MultiData.hpp */,
+				647CFAF427387E8800A112F6 /* MultiNames.cpp */,
 				64941692273543320092D36B /* TileData.cpp */,
 				64941694273543320092D36B /* TileData.hpp */,
 				64941690273543320092D36B /* TileInfo.cpp */,
@@ -151,6 +175,10 @@
 				649416B2273569910092D36B /* GumpData.hpp */,
 				649416B42735ACC70092D36B /* AnimationData.cpp */,
 				649416B52735ACC70092D36B /* AnimationData.hpp */,
+				649416B927369EB50092D36B /* RadarColor.cpp */,
+				649416BA27369EB50092D36B /* RadarColor.hpp */,
+				649416BC2736A2900092D36B /* Block.cpp */,
+				649416BD2736A2900092D36B /* Block.hpp */,
 			);
 			path = UOData;
 			sourceTree = "<group>";
@@ -253,10 +281,14 @@
 			files = (
 				649416B3273569910092D36B /* GumpData.cpp in Sources */,
 				6494169F273543320092D36B /* IDXMul.cpp in Sources */,
+				649416BE2736A2900092D36B /* Block.cpp in Sources */,
+				649416BB27369EB50092D36B /* RadarColor.cpp in Sources */,
+				647CFAF527387E8800A112F6 /* MultiNames.cpp in Sources */,
 				649416A9273543480092D36B /* Buffer.cpp in Sources */,
 				6494169D273543320092D36B /* TileInfo.cpp in Sources */,
 				649416A0273543320092D36B /* UOPData.cpp in Sources */,
 				6494169E273543320092D36B /* TileData.cpp in Sources */,
+				649416C72738058E0092D36B /* MapTerArt.cpp in Sources */,
 				649416A2273543320092D36B /* MapTerrain.cpp in Sources */,
 				649416AD273544EF0092D36B /* TexMap.cpp in Sources */,
 				6494168C2735431C0092D36B /* Bitmap.cpp in Sources */,
@@ -264,9 +296,11 @@
 				649416A3273543320092D36B /* UOAlerts.cpp in Sources */,
 				6494168D2735431C0092D36B /* Color.cpp in Sources */,
 				649416B62735ACC70092D36B /* AnimationData.cpp in Sources */,
+				649416C12736BFC50092D36B /* UOMapBase.cpp in Sources */,
 				6494168E2735431C0092D36B /* ScanLine.cpp in Sources */,
 				649416B027354EA50092D36B /* ArtData.cpp in Sources */,
 				6494167B273542AB0092D36B /* main.cpp in Sources */,
+				649416C42737E82B0092D36B /* MapArt.cpp in Sources */,
 				649416AA273543480092D36B /* StringUtility.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

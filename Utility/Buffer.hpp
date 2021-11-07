@@ -63,8 +63,8 @@ public:
 	Buffer(const std::vector<std::uint8_t> &data);
 	Buffer(const std::uint8_t *ptr,std::size_t size );
 	
-	const std::vector<unsigned char>& raw() const ;
-	std::vector<unsigned char> & raw() ;
+	const std::vector<std::uint8_t>& raw() const ;
+	std::vector<std::uint8_t> & raw() ;
 	
 	std::size_t size() const ;
 	void size(std::size_t size) ;
