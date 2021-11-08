@@ -50,7 +50,7 @@
 #include "Bitmap.hpp"
 #include "AnimationData.hpp"
 #include "MapTerArt.hpp"
-
+#include "LightData.hpp"
 #include "RadarColor.hpp"
 
 using namespace std::string_literals;
@@ -69,12 +69,13 @@ bool _map3 = false ;
 bool _map4 = false ;
 bool _map5 = false ;
 bool _multi = false ;
+bool _light = false;
 
 std::map<std::string,bool*> _flags {
 	{"--info"s,&_info},{"--terrain"s,&_terrain},{"--art"s, &_art},
 	{"--texture"s,&_texture},{"--gump"s,&_gump},{"--animation"s,&_animation},
 	{"--map0"s,&_map0},{"--map1"s,&_map1},{"--map2"s,&_map2},{"--map3"s,&_map3},
-	{"--map4"s,&_map4},{"--map5"s,&_map5},{"--multi"s,&_multi}
+	{"--map4"s,&_map4},{"--map5"s,&_map5},{"--multi"s,&_multi},{"--light"s,&_light}
 };
 
 int main(int argc, const char * argv[]) {
@@ -113,22 +114,7 @@ int main(int argc, const char * argv[]) {
 		}
 	}
 	
-	UO::multi_st multi ;
-	UO::multi_structure unit ;
-	multi.x = 0;
-	unit.components.push_back(multi);
-	multi.x = 3 ;
-	unit.components.push_back(multi);
-	multi.x = 7;
-	unit.components.push_back(multi);
-	std::sort(unit.components.rbegin(),unit.components.rend(),[](const UO::multi_st &lhs,UO::multi_st &rhs) {
-		return lhs.x < rhs.x;
-	});
-	for (auto &entry: unit.components){
-		std::cout << entry.x << std::endl;
-	}
 
-	return EXIT_SUCCESS;
 	
 	try {
 		// Now, lets process!
@@ -563,6 +549,23 @@ int main(int argc, const char * argv[]) {
 				output.close();
 				
 			}
+		}
+		if (_light){
+			auto path = outputdir / std::filesystem::path("lights");
+			if (!std::filesystem::exists(path)){
+				std::filesystem::create_directory(path);
+			}
+			std::cout <<"Loading Light information"<<std::endl;
+			UO::LightData lights(uodir.string());
+			std::cout <<"Extracting light information << std::endl;"
+			for (auto i = 0 ; i < lights.maxID();i++){
+				auto bitmap = lights.bitmap(i);
+				if (!bitmap.empty()){
+					auto filepath = path / std::filesystem::path(strutil::numtostr(i,16,true,4)+".bmp"s);
+					bitmap.save(filepath.string());
+				}
+			}
+			
 		}
 	}
 	catch (const std::exception &e){

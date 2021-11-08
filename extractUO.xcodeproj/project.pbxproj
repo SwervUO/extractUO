@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		647CFAF527387E8800A112F6 /* MultiNames.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 647CFAF427387E8800A112F6 /* MultiNames.cpp */; };
+		647CFAF8273945E200A112F6 /* LightData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 647CFAF6273945E200A112F6 /* LightData.cpp */; };
 		6494167B273542AB0092D36B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6494167A273542AB0092D36B /* main.cpp */; };
 		64941683273542DD0092D36B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 64941682273542DD0092D36B /* libz.tbd */; };
 		6494168C2735431C0092D36B /* Bitmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649416862735431C0092D36B /* Bitmap.cpp */; };
@@ -47,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		647CFAF427387E8800A112F6 /* MultiNames.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MultiNames.cpp; sourceTree = "<group>"; };
+		647CFAF6273945E200A112F6 /* LightData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LightData.cpp; sourceTree = "<group>"; };
+		647CFAF7273945E200A112F6 /* LightData.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LightData.hpp; sourceTree = "<group>"; };
 		64941677273542AB0092D36B /* extractUO */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = extractUO; sourceTree = BUILT_PRODUCTS_DIR; };
 		6494167A273542AB0092D36B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		64941682273542DD0092D36B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -156,6 +159,8 @@
 				649416C62738058E0092D36B /* MapTerArt.hpp */,
 				649416BF2736BFC50092D36B /* UOMapBase.cpp */,
 				649416C02736BFC50092D36B /* UOMapBase.hpp */,
+				647CFAF6273945E200A112F6 /* LightData.cpp */,
+				647CFAF7273945E200A112F6 /* LightData.hpp */,
 				64941696273543320092D36B /* MultiData.cpp */,
 				6494169B273543320092D36B /* MultiData.hpp */,
 				647CFAF427387E8800A112F6 /* MultiNames.cpp */,
@@ -279,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				647CFAF8273945E200A112F6 /* LightData.cpp in Sources */,
 				649416B3273569910092D36B /* GumpData.cpp in Sources */,
 				6494169F273543320092D36B /* IDXMul.cpp in Sources */,
 				649416BE2736A2900092D36B /* Block.cpp in Sources */,
