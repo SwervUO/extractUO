@@ -18,6 +18,9 @@ namespace UO {
 	
 	//===============================================================
 	bool GumpData::processEntry(std::size_t entry, std::size_t index, const std::vector<std::uint8_t> &data) {
+		if (data.size() <=8){
+			return true ;
+		}
 		_gumps.insert_or_assign(index, data);
 		return true ;
 	}
@@ -46,6 +49,9 @@ namespace UO {
 		auto height = *(ptr+1) ;
 
 		IMG::Bitmap bitmap(width,height,0xFFFFFF);
+		if (bitmap.empty()){
+			return bitmap ;
+		}
 		std::vector<std::uint8_t> newdata(data.size()-8,0);
 		std::copy(data.begin()+8,data.end(),newdata.begin());
 		

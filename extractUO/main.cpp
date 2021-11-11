@@ -114,7 +114,6 @@ int main(int argc, const char * argv[]) {
 		}
 	}
 	
-
 	
 	try {
 		// Now, lets process!
@@ -124,8 +123,12 @@ int main(int argc, const char * argv[]) {
 			std::cout <<"Loading artwork (also needed for --info)" << std::endl;
 			UO::ArtData artwork(uodir.string());
 			if (_info) {
-				auto terinfo = outputdir / std::filesystem::path("terrain.csv"s);
-				auto artinfo = outputdir / std::filesystem::path("art.csv"s);
+				auto path = outputdir / std::filesystem::path("info") ;
+				if (!std::filesystem::exists(path)){
+					std::filesystem::create_directory(path);
+				}
+				auto terinfo = path / std::filesystem::path("terrain.csv"s);
+				auto artinfo = path / std::filesystem::path("art.csv"s);
 				// output the terrain info
 				std::ofstream output(terinfo.string()) ;
 				std::cout <<"Extracting Terrain info" << std::endl;
@@ -557,7 +560,7 @@ int main(int argc, const char * argv[]) {
 			}
 			std::cout <<"Loading Light information"<<std::endl;
 			UO::LightData lights(uodir.string());
-			std::cout <<"Extracting light information << std::endl;"
+			std::cout <<"Extracting light information << std::endl;";
 			for (auto i = 0 ; i < lights.maxID();i++){
 				auto bitmap = lights.bitmap(i);
 				if (!bitmap.empty()){
