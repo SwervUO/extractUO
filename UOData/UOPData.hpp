@@ -160,8 +160,8 @@ namespace UO {
 		/************************************************************************
 		 Hash routines
 		 ***********************************************************************/
-		std::uint64_t hashLittle2(const std::string& s) const;
-		std::uint32_t hashAdler32(const std::vector<std::uint8_t> &data) const;
+		static std::uint64_t hashLittle2(const std::string& s) ;
+		static std::uint32_t hashAdler32(const std::vector<std::uint8_t> &data) ;
 		std::string format(const std::string& hashformat, std::size_t index) const;
 		std::size_t findIndex(const std::vector<std::uint64_t> &hashdata, std::uint64_t hash);
 		
